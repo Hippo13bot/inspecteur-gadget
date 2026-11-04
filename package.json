@@ -1,7 +1,7 @@
 {
   "name": "inspecteur-gadget",
   "productName": "Inspecteur Gadget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Le détective des bonnes affaires : recherche et compare les produits sur le Web.",
   "author": "Inspecteur Gadget",
   "main": "main.js",

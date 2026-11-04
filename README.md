@@ -45,8 +45,8 @@ Les fichiers sont créés dans `dist/`. La compilation macOS doit idéalement ê
 2. Décompressez cette archive et envoyez **le contenu** du dossier à la racine du dépôt (pas le dossier parent).
 3. Faites `Commit changes` sur la branche `main`.
 4. Ouvrez l'onglet **Actions** puis **Build Inspecteur Gadget**.
-5. Cliquez **Run workflow**. Le workflow compile sur `macos-latest` et `windows-latest`.
-6. Ouvrez l'exécution terminée et récupérez les artefacts `inspecteur-gadget-macos-latest` (DMG) et `inspecteur-gadget-windows-latest` (EXE).
+5. Cliquez **Run workflow**. Le workflow compile sur `macos-14` et `windows-latest`.
+6. Ouvrez l'exécution terminée et récupérez les artefacts `Inspecteur-Gadget-mac` (DMG) et `Inspecteur-Gadget-win` (EXE).
 7. Pour créer une version publique : créez un tag `v1.0.0` et poussez-le (`git tag v1.0.0 && git push origin v1.0.0`). Le workflow sera relancé. Publiez ensuite les installateurs dans **Releases**.
 
 ## IA facultative et coût
@@ -79,3 +79,18 @@ Inspecteur Gadget est créé par **@hippo.reporter**. L’interface et les élé
 ### Icône de l'application
 
 L'icône macOS (`assets/icon.icns`), Windows (`assets/icon.ico`) et l'aperçu PNG (`assets/icon.png`) utilisent désormais une image fixe extraite du GIF fourni : ce n'est pas le GIF animé qui sert d'icône, mais une image arrêtée du personnage.
+
+
+## Ouvrir l’application sur macOS (build GitHub non signé)
+
+Si macOS affiche « Inspecteur Gadget est endommagé et ne peut pas être ouvert » pour une version que vous avez compilée ou téléchargée depuis **votre propre dépôt GitHub et dont vous vérifiez la provenance**, vous pouvez retirer l’attribut de quarantaine après avoir installé l’application dans `/Applications` :
+
+```bash
+xattr -cr "/Applications/Inspecteur Gadget.app"
+```
+
+Puis relancez l’application. Cette commande ne répare pas un fichier réellement corrompu et ne doit pas être utilisée pour contourner un avertissement concernant une application dont vous ne connaissez pas la provenance. Pour une distribution publique sans cette manipulation, il faudra signer et notariser l’application avec un compte Apple Developer.
+
+## Affichage des prix
+
+Un prix numérique n’est affiché que lorsqu’il a été trouvé dans un extrait de recherche ou dans les données de prix publiées par la fiche produit. Chaque offre garde toutefois un emplacement de prix visible : si aucune valeur fiable n’est accessible automatiquement, l’application indique « Prix non communiqué » et invite à consulter la fiche du marchand. Elle ne fabrique jamais de prix. Les prix détectés peuvent évoluer et les frais de livraison peuvent s’ajouter.
